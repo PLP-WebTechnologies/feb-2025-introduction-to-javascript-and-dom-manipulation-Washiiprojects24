@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript and DOM Manipulation</title>
+  <style>
+    /* Basic Styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    section {
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #textParagraph {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* Custom Style for New Elements */
+    .new-element {
+      background-color: lightgreen;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Heading Section -->
+  <header>
+    <h1>Welcome to JavaScript DOM Manipulation</h1>
+  </header>
+
+  <!-- Paragraph Section -->
+  <section>
+    <p id="textParagraph">This is a paragraph. Click the button below to change its content and style.</p>
+    <button id="changeTextBtn">Change Text and Style</button>
+  </section>
+
+  <!-- Section for Adding/Removing Element -->
+  <section>
+    <button id="addElementBtn">Add New Element</button>
+    <button id="removeElementBtn">Remove Element</button>
+    <div id="dynamicContent"></div>
+  </section>
+
+  <script>
+    // Select elements from the DOM
+    const changeTextBtn = document.getElementById("changeTextBtn");
+    const textParagraph = document.getElementById("textParagraph");
+    const addElementBtn = document.getElementById("addElementBtn");
+    const removeElementBtn = document.getElementById("removeElementBtn");
+    const dynamicContent = document.getElementById("dynamicContent");
+
+    // Function to change text content and style
+    changeTextBtn.addEventListener("click", function() {
+      // Change the text content of the paragraph
+      textParagraph.innerText = "This content has been changed using JavaScript!";
+      
+      // Modify the paragraph style
+      textParagraph.style.color = "blue";
+      textParagraph.style.fontSize = "1.5rem";
+      textParagraph.style.fontWeight = "bold";
+    });
+
+    // Function to add a new element dynamically
+    addElementBtn.addEventListener("click", function() {
+      const newElement = document.createElement("div");
+      newElement.classList.add("new-element");
+      newElement.innerText = "I am a dynamically added element!";
+      
+      // Append the new element to the dynamicContent section
+      dynamicContent.appendChild(newElement);
+    });
+
+    // Function to remove the last added element
+    removeElementBtn.addEventListener("click", function() {
+      const lastElement = dynamicContent.lastElementChild;
+      
+      if (lastElement) {
+        // Remove the last added element
+        dynamicContent.removeChild(lastElement);
+      }
+    });
+  </script>
+
+</body>
+</html>
